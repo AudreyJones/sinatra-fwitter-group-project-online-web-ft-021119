@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.new(params)
+    user = User.new(params)
     if user.save
-      redirect to "/users/#{@user.id}"
+      redirect to "/tweets/tweets"
     else
       redirect "/signup"
     end

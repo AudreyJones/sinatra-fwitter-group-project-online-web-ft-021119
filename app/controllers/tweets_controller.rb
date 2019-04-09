@@ -1,11 +1,18 @@
 class TweetsController < ApplicationController
 
-  get '/tweets/new' do
+  get '/tweets/new' do #Load the Create Tweet form
     erb :"/tweets/new"
   end
 
-  post '/tweets' do
-    
+  post '/tweets' do #Processes the form submission
+    binding.pry
+    tweet = Tweet.create(content: params[content])
+      if tweet.save
+        redirect to "/tweets"
+      else
+        puts "Your tweet entry was denied"
+      end
+    erb :"/tweets/tweets"
   end
 
 end
