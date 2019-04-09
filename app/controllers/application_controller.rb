@@ -11,4 +11,12 @@ class ApplicationController < Sinatra::Base
     erb :homepage
   end
 
+  get "/signup" do
+    erb :signup
+  end
+
+  get '/tweets' do
+    
+  end
+
 end
