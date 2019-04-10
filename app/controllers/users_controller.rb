@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
     if user.save
       redirect to "/tweets/tweets"
+    elsif user.email == ""
+      binding.pry
     else
       redirect "/signup"
     end
