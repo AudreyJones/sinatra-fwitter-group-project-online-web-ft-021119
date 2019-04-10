@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  # validates_presence_of :name, :email, :password
+  
   def logged_in?
     # binding.pry
     (session[:user_id] != "") ? true : false
@@ -7,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    binding.pry
-    if user.logged_in? == true
-    end
+    # binding.pry
+    # if user.logged_in? == true
+    # end
     erb :"/signup"
   end
 
