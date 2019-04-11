@@ -121,6 +121,7 @@ describe ApplicationController do
 
     it 'does not load /tweets if user not logged in' do
       get '/tweets'
+      # binding.pry
       expect(last_response.location).to include("/login")
     end
 

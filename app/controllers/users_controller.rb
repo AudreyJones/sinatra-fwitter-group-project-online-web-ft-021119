@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if Helpers.is_logged_in?(session) == true
-      redirect to "/tweets/tweets"
+      redirect to "/tweets"
     else
       erb :"/signup"
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if (user.username != "") && (user.email != "") && (user.password != nil)
       user.save
       session[:user_id] = user.id
-      redirect to "/tweets/tweets"
+      redirect to "/tweets"
     else
       redirect "/signup"
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if Helpers.is_logged_in?(session) == true
-      redirect to "/tweets/tweets"
+      redirect to "/tweets"
     else
       erb :login
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     session[:user_id] = @user.id
     if Helpers.is_logged_in?(session)
-      redirect to "tweets/tweets"
+      redirect to "tweets"
     else
       erb :login
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   get '/logout' do
     # binding.pry
     if Helpers.is_logged_in?(session) == true
-      session.clear
+      session.destroy
       redirect to "/login"
     else
       redirect to "/homepage"

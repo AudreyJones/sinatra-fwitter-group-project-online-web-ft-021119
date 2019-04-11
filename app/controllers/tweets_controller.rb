@@ -13,14 +13,14 @@ class TweetsController < ApplicationController
       else
         puts "Your tweet entry was denied"
       end
-    erb :"/tweets/tweets"
+    erb :"/tweets"
   end
 
-  get '/tweets/tweets' do
+  get '/tweets' do
     @user = User.find_by_id(session[:user_id])
     # binding.pry
     if Helpers.is_logged_in?(session) == true
-      erb :"/tweets/tweets"
+      erb :"/tweets"
     else
       redirect to "/login"
     end
