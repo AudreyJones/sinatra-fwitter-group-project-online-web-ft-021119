@@ -22,9 +22,8 @@ class TweetsController < ApplicationController
     if Helpers.is_logged_in?(session) == true
       erb :"/tweets/tweets"
     else
-      erb :login
+      redirect to "/login"
     end
-
   end
 
 end
