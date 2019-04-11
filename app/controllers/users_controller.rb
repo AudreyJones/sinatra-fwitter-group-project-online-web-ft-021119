@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if Helpers.is_logged_in?(session) == true
       redirect to "/tweets/tweets"
     else
-      erb :homepage
+      erb :login
     end
   end
 
