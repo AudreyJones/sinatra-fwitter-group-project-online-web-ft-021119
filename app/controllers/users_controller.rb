@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     else
       erb :"/signup"
     end
-
   end
 
   post '/signup' do
