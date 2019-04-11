@@ -5,6 +5,8 @@ class TweetsController < ApplicationController
   end
 
   post '/tweets' do #Processes the form submission
+
+
     tweet = Tweet.create(content: params[content])
       if tweet.save
         redirect to "/tweets"
@@ -12,6 +14,17 @@ class TweetsController < ApplicationController
         puts "Your tweet entry was denied"
       end
     erb :"/tweets/tweets"
+  end
+
+  get '/tweets/tweets' do
+    @user = User.find_by_id(session[:user_id])
+    # binding.pry
+    if Helpers.is_logged_in?(session) == true
+      erb :"/tweets/tweets"
+    else
+      erb :login
+    end
+
   end
 
 end
