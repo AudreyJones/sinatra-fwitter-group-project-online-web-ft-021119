@@ -5,7 +5,6 @@ class TweetsController < ApplicationController
   end
 
   post '/tweets' do #Processes the form submission
-    binding.pry
     tweet = Tweet.create(content: params[content])
       if tweet.save
         redirect to "/tweets"

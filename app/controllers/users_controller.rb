@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
   # validates_presence_of :name, :email, :password
-  
-  def logged_in?
-    # binding.pry
-    (session[:user_id] != "") ? true : false
-      # binding.pry
-  end
 
   get '/signup' do
     # binding.pry
@@ -24,6 +18,23 @@ class UsersController < ApplicationController
     else
       redirect "/signup"
     end
+  end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    # binding.pry
+    @user = User.find_by(username: params[:username])
+    session[:user_id] = @user.id
+    # binding.pry
+    if Helpers.is_logged_in?(session)
+      erb :tweets
+    else
+      erb :login
+    end
+
   end
 
 end
